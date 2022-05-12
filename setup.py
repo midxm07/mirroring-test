@@ -1,7 +1,7 @@
 from setuptools import setup,find_packages
 
 setup(
-    name="pip-pkg-demo1",
+    name="pypi-package-demo",
     version="0.0.1",
     author="Deepak Mishra",
     author_email="deepak.mishra2@gmail.com",
