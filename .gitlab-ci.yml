@@ -5,7 +5,7 @@ variables:
 
 
 image:
-  name: python:3.8-alpine
+  name: python:3.9-alpine
 
 stages:
     - build and deploy
