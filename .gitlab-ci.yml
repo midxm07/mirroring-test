@@ -1,0 +1,27 @@
+image:
+  name: python:3.9-alpine
+
+stages:
+    - build and deploy
+
+before_script:
+    - python -v
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+
+build and publish package pkg:
+    stage: build and deploy
+    variables:
+        USERNAME="demo_package_key"
+        API_TOKEN="NUHrdmQWXpE2HUTRQGbB"
+    script:
+        - python pypi-package-demo/setup.py sdist bdist_wheel
+        - pip install twine
+        - python -m twine update --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*
+    artifacts:
+        paths:
+            - dist/*.whl
+        expire_in: 7 days
+
+    
