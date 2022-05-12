@@ -12,13 +12,11 @@ before_script:
 
 build and publish package pkg:
     stage: build and deploy
-    variables:
-        USERNAME="demo_package_key"
-        API_TOKEN="NUHrdmQWXpE2HUTRQGbB"
+                    
     script:
         - python pypi-package-demo/setup.py sdist bdist_wheel
         - pip install twine
-        - python -m twine update --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*
+        - TWINE_PASSWORD=${API_TOKEN} TWINE_PASSWORD=${USERNAME} python -m twine update --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*
     artifacts:
         paths:
             - dist/*.whl
