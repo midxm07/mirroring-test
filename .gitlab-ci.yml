@@ -20,7 +20,7 @@ build and publish package pkg:
     stage: build and deploy
                     
     script:
-        - python pypi-package-demo/setup.py sdist bdist_wheel
+        - python PypiPackageDemo/setup.py sdist bdist_wheel
         - pip install twine
         - TWINE_PASSWORD=${API_TOKEN} TWINE_PASSWORD=${USERNAME} python -m twine update --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*
     artifacts:
