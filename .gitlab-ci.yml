@@ -5,16 +5,11 @@ variables:
 
 
 image:
-  name: python:3.9-alpine
+  name: python:latest
 
 stages:
     - build and deploy
 
-before_script:
-    - python -v
-    - pip install virtualenv
-    - virtualenv venv
-    - source venv/bin/activate
 
 build and publish package pkg:
     stage: build and deploy
