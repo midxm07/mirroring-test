@@ -23,5 +23,7 @@ build and publish package pkg:
         paths:
             - dist/*.whl
         expire_in: 7 days
+    when: manual
+
 
     
