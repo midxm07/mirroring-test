@@ -2,6 +2,7 @@ variables:
   HTTP_PROXY: http://emea-aws-webproxy.service.cloud.local:3128
   HTTPS_PROXY: http://emea-aws-webproxy.service.cloud.local:3128
   NO_PROXY: cloud.local,sanofi.com,docker,169.254.169.254
+  TWINE_CERT: '$CI_PROJECT_DIR/Certs/ca'
 
 
 image:
@@ -17,7 +18,7 @@ build and publish package pkg:
     script:
         - python setup.py sdist bdist_wheel
         - pip install twine
-        - TWINE_CERT=${cert} TWINE_PASSWORD=${API_TOKEN} TWINE_USERNAME=${USERNAME} python -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/* --verbose
+        - TWINE_PASSWORD=${API_TOKEN} TWINE_USERNAME=${USERNAME} python -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/* --verbose
     artifacts:
         paths:
             - dist/*.whl
