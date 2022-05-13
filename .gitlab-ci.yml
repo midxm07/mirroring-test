@@ -6,7 +6,7 @@ variables:
 
 
 image:
-  name: python:latest
+  name: python:3.7
 
 stages:
     - build and deploy
