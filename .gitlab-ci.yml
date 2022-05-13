@@ -17,7 +17,7 @@ build and publish package pkg:
     script:
         - python setup.py sdist bdist_wheel
         - pip install twine
-        - TWINE_CERT="/Users/E0512941/dev/tools/cert/sanofi_root_ca.crt" TWINE_PASSWORD=${API_TOKEN} TWINE_USERNAME=${USERNAME} python -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/* --verbose
+        - TWINE_CERT="/c/Users/E0512941/dev/tools/cert/sanofi_root_ca.crt" TWINE_PASSWORD=${API_TOKEN} TWINE_USERNAME=${USERNAME} python -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/* --verbose
     artifacts:
         paths:
             - dist/*.whl
